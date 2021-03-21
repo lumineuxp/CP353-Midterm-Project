@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 20px;
+        background-color: transparent;
+        padding: 15px;
+    }
+    
+    .grid-container>div {
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+    }
+    
+    body {
+        background-image: url('https://cdn.dribbble.com/users/5031/screenshots/12064169/dribble_1_4x.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    * {
+        font-family: 'Questrial', sans-serif;
+    }
+    
+    .navbar {
+        background: #5f2c82;
+        background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
+        background: linear-gradient(to right, #49a09d, #5f2c82);
+    }
+    
+    .glow {
+        font-size: 50px;
+        color: #fff;
+        animation: glow 1s ease-in-out infinite alternate;
+    }
+    
+    @-webkit-keyframes glow {
+        from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+        }
+        to {
+            text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+        }
+    }
+    /* NAVIGATION */
+    
+    nav {
+        width: 100%;
+        margin: 0 auto;
+        background: #fff;
+        padding: 50px 0;
+        box-shadow: 0px 5px 0px #dedede;
+    }
+    
+    nav ul {
+        list-style: none;
+        text-align: center;
+    }
+    
+    nav ul li {
+        display: inline-block;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 15px;
+        text-decoration: none;
+        color: #aaa;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin: 0 10px;
+    }
+    
+    nav ul li a,
+    nav ul li a:after,
+    nav ul li a:before {
+        transition: all .5s;
+    }
+    
+    nav ul li a:hover {
+        color: #555;
+    }
+    /* stroke */
+    
+    nav.stroke ul li a,
+    nav.fill ul li a {
+        position: relative;
+    }
+    
+    nav.stroke ul li a:after,
+    nav.fill ul li a:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 0%;
+        content: '.';
+        color: transparent;
+        background: #aaa;
+        height: 1px;
+    }
+    
+    nav.stroke ul li a:hover:after {
+        width: 100%;
+    }
+    
+    nav.fill ul li a {
+        transition: all 2s;
+    }
+    
+    nav.fill ul li a:after {
+        text-align: left;
+        content: '.';
+        margin: 0;
+        opacity: 0;
+    }
+    
+    nav.fill ul li a:hover {
+        color: #fff;
+        z-index: 1;
+    }
+    
+    nav.fill ul li a:hover:after {
+        z-index: -10;
+        animation: fill 1s forwards;
+        -webkit-animation: fill 1s forwards;
+        -moz-animation: fill 1s forwards;
+        opacity: 1;
+    }
+    
+    li:hover {
+        background-color: #666699;
+        border-radius: 3px;
+    }
+    
+    .button {
+        border-radius: 15px;
+        background-color: #6699CC;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 10px;
+        width: 150px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+    
+    .button:hover {
+        background-color: #6666CC;
+        opacity: 1;
+        right: 0;
+    }
+    
+    hr.new4 {
+        border: 3px solid whitesmoke;
+    }
+    
+    table.table-hover tbody tr:hover {
+        background-color: #ff40c696;
+    }
+    
+    table.table-hover tbody a:hover {
+        color: rgb(255, 255, 255);
+    }
+    
+    thead {
+        font-size: 20px;
+        font-family: 'Lucida Sans';
+        background-color: rgba(255, 255, 255, 0.863);
+    }
+    
+    tbody {
+        font-size: 18px;
+        font-family: 'Garamond', serif;
+        background-color: rgba(255, 255, 255, 0.863);
+    }
+    
+    div.polaroid {
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+        padding: 10px;
+    }
+    
+    div.container2 {
+        text-align: center;
+        padding: 10px 20px;
+    }
+    
+    .container {
+        max-width: 100%
+    }
+</style>
+
+<head>
+    <title>My Web Application midterm</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+    {% include './includes/_navbar.html' %}
+
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
+
+
+    <footer>
+        <div class="container-fluid" style="width:100%; background-color:#5f2c82; text-align:center;">
+            <br/>
+            <p style="color: white;">Copyright © 2021 By ID 161,173,430</p><br/>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+{% extends 'base_layout.html' %} {% block body %}
+<br/><br/><br/><br/>
+<div class="container">
+    <h class="glow">{{albums.title}}</h>
+
+    <table style="width: 500px;">
+        <tr>
+            <td>
+                <img src={{albums.cover_medium}}>
+            </td>
+            <td>
+                <p>by <a href="/artist/{{albums.artist['id']}}">{{albums.artist['name']}}</a></p>
+                <p>{{albums.nb_tracks}} tracks</p>
+                <p>{{albums.fans}} fans </p>
+                <p>relese date: {{albums.release_date}}</p>
+            </td>
+        </tr>
+    </table>
+
+
+    <br><br>
+    <h class="glow">TRACKS</h>
+    <table class="table-bordered table-hover container-fluid">
+        <thead>
+            <tr>
+                <th>Track</th>
+                <th>Artist</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+
+
+        {% for track in tracks %}
+        <tbody>
+            <tr>
+                <td><a href={{track.link}}>{{track.title}}</a></td>
+                <td><a href="/artist/{{track.artistId}}">{{track.artist}}</a></td>
+                <td><audio controls autoplay muted>
+                    <source src={{track.preview}} type="audio/mpeg ">
+                    Your browser does not support the audio element.
+                    </audio></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+
+        <tbody>
+            <tr>
+                <td><a href={{albums.link}}>-- see more --</a></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    </br>
+    </br>
+    {% endblock %}

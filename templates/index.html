@@ -1,0 +1,22 @@
+{% extends 'base_layout.html' %} {% block body %}
+<br/><br/><br/><br/>
+<h class="glow">HOME</h>
+<div class="grid-container">
+
+    {% for track in tracks %}
+    <div class="card" style="width: 22rem;">
+        <div class="card-body">
+            <img class="card-img-top " src={{track.cover}}>
+            <p><a href={{track.link}}>{{track.title}}</a></p>
+            <p>Artist:<a href="/artist/{{track.arId}}">{{track.name}}</a></p>
+            <p>Album:<a href="/album/{{track.alId}}"> {{track.album}}</a></p>
+            <audio controls autoplay muted>
+        <source src={{track.preview}} type="audio/mpeg ">
+        Your browser does not support the audio element.
+        </audio>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

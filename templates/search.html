@@ -1,0 +1,83 @@
+{% extends 'base_layout.html' %} {% block body %}
+</br>
+</br>
+</br>
+</br>
+
+<style>
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+
+<h1 class="glow">Search</h1>
+<div class="container" style="background-color: white; border-radius: 10px; padding-top: 10px;">
+    <p>You can search another track, album or artist do you want in here.</p>
+    <form method="POST">
+        <input type="text" name="search" placeholder="search">
+        <button class="button" type="submit">Submit</button>
+    </form>
+    </br>
+    {%for message in get_flashed_messages() %}
+    <div class="alert alert-danger" role="alert">{{ message }} </div>{%endfor %}{% if artists %}
+
+    <h2 class="glow">Tracks</h2>
+    <table class="table-bordered table-hover container-fluid">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Track</th>
+                <th>Artist</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+        {% for track in tracks %}
+        <tbody>
+            <tr>
+                <td><img src="{{track.album['cover_small']}}"></td>
+                <td><a href={{track.link}}>{{track.title}}</a></td>
+                <td><a href="/artist/{{track.artist['id']}}">{{track.artist['name']}}</a></td>
+                <td><audio controls autoplay muted>
+        <source src={{track.preview}} type="audio/mpeg ">
+      Your browser does not support the audio element.
+      </audio></td>
+            </tr>
+        </tbody>
+        {% endfor %}</table>
+
+
+    <h2 class="glow">Artist</h2>
+    <div class="grid-container">
+        <tr>{% for artist in artists %}
+
+            <td>
+                <div>
+                    <img src={{artist.picture}}>
+                    <h5><a href="/artist/{{artist.id}}">{{artist.name}}</a></h5>
+                    <p>{{artist.nb_fan}} fans</p>
+                    <hr>
+                </div>
+            </td>
+            {% endfor %}
+    </div>
+    <h2 class="glow">Album</h2>
+    <div class="grid-container">
+        {% for album in albums %}
+        <div>
+            <img src="{{album.cover}}">
+
+            <h5><a href="/album/{{album.id}}">{{album.title}}</a></h5>
+            <p>by <a href="/artist/{{album.artist['id']}}">{{album.artist['name']}}</a></p>
+            <p>{{album.nb_tracks}} track</p>
+            <hr>
+        </div>
+
+        {% endfor %}</div> {% endif %}</br>
+</div>
+</br>
+</br>
+</br>
+</br>
+</br>{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base_layout.html' %} {% block body %}
+<h1>charts</h1>
+<div class="container">
+    </br>
+    </br>
+    <h2 class="glow">Top Tracks</h2>
+    <div class="grid-container">
+        {% for track in tracks %}
+
+        <div class="card" style="width: 22rem;">
+            <img class="card-img-top " src={{track.cover}}>
+            <p>{{track.position}}</p>
+            <p><a href={{track.link}}>{{track.title}}</a></p>
+            <p>Artist:<a href="/artist/{{track.arId}}">{{track.name}}</a></p>
+            <p>Album:<a href="/album/{{track.alId}}"> {{track.album}}</a></p>
+            <audio controls autoplay muted>
+        <source src={{track.preview}} type="audio/mpeg ">
+      Your browser does not support the audio element.
+      </audio>
+
+        </div>
+        {% endfor %}
+    </div>
+    <hr class="new4">
+
+    <h2 class="glow">Most-streamed artists</h2>
+    <div class="grid-container">
+        {% for artist in artists %}
+        <div class="card" style="width: 22rem;">
+            <img class="card-img-top " src={{artist.picture_big}}>
+            <p>{{artist.position}}</p>
+            <a href="/artist/{{artist.id}}">{{artist.name}}</a>
+            <p>{{artist.fans}} fans</p>
+        </div>{% endfor %}
+    </div>
+    <hr class="new4">
+
+    <h2 class="glow">Most-streamed albums</h2>
+    <div class="grid-container">
+        {% for album in albums %}
+        <div class="card" style="width: 22rem;">
+            <img class="card-img-top " src={{album.cover}}>
+            <p>{{album.position}}</p>
+            <a href="/album/{{album.alId}}">{{album.title}}</a>
+            <p>by <a href="/artist/{{album.arId}}">{{album.name}}</a></p>
+        </div>{% endfor %}</div>
+
+</div>
+
+{% endblock %}
